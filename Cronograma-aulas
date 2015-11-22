@@ -1,0 +1,42 @@
+Aula 1: Apresentação e Objetivo;
+
+Aula 2: O que Integração Contínua?
+
+Aula 3: Um exemplo do servidor de CI funcionando:
+
+Aula 4: Montagem do Servidor
+	- Instalando o Virtual Box;
+	- Instalando o Debian8 na Máquina Virtual;
+	- Iniciando a máquina virtual com rede em modo Bridge;
+
+Aula 5: Instalando suite de produtos no Servidor;
+	- Instalando o JAVA 7 e 8;
+	- Instalando o Maven3
+	- Instalando o Apache Tomcat7
+	- Instalando o Git
+
+Aula 6: Instalando o Jenkins
+	- Configurando o Jenkins;
+	- Fazendo o Deploy do Jenkins no Tomcat7;
+
+Aula 7: Configurações iniciais do Jenkins;
+	- Configurando políticas de segurança;
+	- Instalando plugins do Jenkins;
+
+Aula 8: Criando um projeto no Github:
+	- Criando um repositório no Github;
+	- Fazendo o clone do projeto na máquina local do desenvolvedor;
+	- Fazendo o primeiro Commit;
+
+Aula 9: Criando o primeiro JOB
+	- Criando um job no Jenkins;
+	- Configurando chave SSH;
+	- Configurando as Triggers do JOB;
+	- Rodando o JOB manualmente pela primeira vez;
+
+Aula 10: Iniciando desenvolvimento do projeto:
+	- Criando o projeto Maven;	
+	- Primeira classe de teste;
+	- Primeira implementação do código;
+	- Commit do código;
+	- Visualizando o Jenkins trabalhando.
