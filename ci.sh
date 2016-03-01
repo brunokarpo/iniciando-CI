@@ -48,36 +48,12 @@ service tomcat7 restart
 ######### Instalando o cliente Git #########
 apt-get install git -y
 
-'
-######### Instalando o PostegreSQL #########
-apt-get install postgresql -y
+# Instalando e configurando as dependências do Gitlab
+apt-get install curl openssh-server ca-certificates postfix
 
-######### Configurando base de dados para o Sonar #########
-su -c psql -s /bin/sh postgres << EOF
-CREATE ROLE sonar LOGIN ENCRYPTED PASSWORD 'sonar' NOINHERIT VALID UNTIL 'infinity';
-CREATE DATABASE sonar WITH ENCODING='UTF8' OWNER=sonar;
-EOF
+# Adicionando os pacotes do Gitlab Server e instalando o serviço
+curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
+apt-get install gitlab-ce
 
-######### Instalando o SonarQube #########
-echo "deb http://downloads.sourceforge.net/project/sonar-pkg/deb binary/" | tee /etc/apt/sources.list.d/sonarqebe.list
-apt-get update
-apt-get install sonar -y --force-yes
-
-######### Instalando o NEXUS OSS #########
-adduser --system --home /home/nexus --disabled-login --disabled-password nexus
-
-cd /home/nexus
-su -c "wget http://www.sonatype.org/downloads/nexus-latest-bundle.zip" -s /bin/sh nexus
-su -c "unzip nexus-latest-bundle.zip" -s /bin/sh nexus
-mv nexus-2.11.3-01/ /opt/
-
-# Aqui tem de fazer a manipulacao do arquivo nexus-2.11.3-01/bin/nexus
-# para setar a NEXUS_HOME=/opt/nexus-2.11.3-01
-# RUN_AS_USER=nexus
-# e PIDDIR=${NEXUS_HOME}
-
-ln -s /opt/nexus-2.11.3-01/bin/nexus /etc/init.d/nexus
-chmod 755 /etc/init.d/nexus
-chown nexus /etc/init.d/nexus
-su -c "/etc/init.d/nexus start" -s /bin/sh nexus
-'
+# Configurando e iniciando o Gitlab
+gitlab-ctl reconfigure
