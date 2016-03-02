@@ -52,7 +52,7 @@ apt-get install git -y
 apt-get install curl openssh-server ca-certificates postfix -y
 
 # Adicionando os pacotes do Gitlab Server e instalando o serviço
-curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
+curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | bash
 apt-get install gitlab-ce -y
 
 # Configurando e iniciando o Gitlab
